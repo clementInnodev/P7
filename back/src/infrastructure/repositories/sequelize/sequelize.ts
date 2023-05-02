@@ -1,18 +1,13 @@
 import { PostRepository } from "../../../core/repositories/posts.repository"
 import { UserRepository } from "../../../core/repositories/users.repository"
-
 import { Post as PostGeneric, PostToCreateData, postToUpdateData } from "../../../core/interfaces/post"
 import { User as UserGeneric, UserSignupBody, UserUpdateBody } from "../../../core/interfaces/user"
-
 import { Post } from "./post.model"
 import { User } from "./user.model"
 import { PostUserLike as Like } from "./post-user-like.model"
-
 import { SequelizePostMapper } from "./sequelize-post.mapper"
 import { SequelizeUserMapper } from "./sequelize-user.mapper"
-
 import { ID } from "../../../core/interfaces/id"
-
 import { injectable } from "inversify"
 import { SequelizePostUserMapper } from "./sequelize-post-user.mapper"
 import { PostUser } from "./post-user.model"
@@ -36,12 +31,10 @@ export class SequelizePost implements PostRepository {
             },
             limit
         })
-        console.log(result)
         const posts = result.map(el => new SequelizePostUserMapper().mapTo(el as unknown as PostUser))
         return posts
     }
 
-    //@ts-ignore
     async getPostsReverse(limit: number): Promise<PostGeneric[]> {
         const result =  await Post.findAll({
             include: [
