@@ -1,0 +1,22 @@
+.users{
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 10px 10px 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: lighten($color: #FD2D01, $amount: 30);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #FD2D01;
+}

@@ -1,0 +1,75 @@
+<div class="article">
+
+    <div class="article-header">
+        <img 
+            class="article-header-img" 
+            src="../../../../../../assets/images/profile-picture.webp" 
+            alt="Image de profil de {{article.user.firstname}} {{article.user.lastname}}"
+        >
+        <div class="article-header-txt">
+            <div class="article-header-name">
+                {{article.user.firstname}} {{article.user.lastname}}
+            </div>
+            <div class="article-header-service">
+                Service {{article.user.service}}
+            </div>
+        </div>
+    </div>
+
+    <div class="article-content">
+
+        <div *ngIf="ownPost" class="article-content-menu">
+            <div>
+                <a (click)="onUpdatePost()"><i class="article-content-menu-icone fa-solid fa-pen-to-square"></i></a>
+            </div>
+            <div (click)="onDeletePost()">
+                <i class="article-content-menu-icone article-content-menu-icone-delete fa-regular fa-circle-xmark"></i>
+            </div>
+        </div>
+
+        <ng-container *ngIf="article.title">
+            <div class="article-content-title">
+                {{article.title}}
+            </div>
+            <div class="article-content-line"></div>
+        </ng-container>
+        <ng-container *ngIf="article.imageUrl">
+            <img class="article-content-img" src="http://localhost:3000/{{article.imageUrl}}">
+            <div class="article-content-line"></div>
+        </ng-container>
+        <div class="article-content-txt">
+            {{article.content}}
+        </div>
+        <div class="article-content-line"></div>
+        <div class="article-content-footer">
+            <div class="article-footer-creation">
+                Posté {{creationDateTxt ? creationDateTxt + (article.creationDate | date: ' à HH:mm') : 'le ' + (article.creationDate | date: 'd MMMM yyyy à HH:mm')}}
+            </div>
+            <div *ngIf="updateDateTxt" class="article-footer-update">
+                Modifié {{updateDateTxt ? updateDateTxt + (article.updateDate | date: ' à HH:mm') : 'le ' + (article.updateDate | date: 'd MMMM yyyy à HH:mm')}}
+            </div>
+        </div>
+
+        <div class="triangle"></div>
+
+    </div>
+
+    <div class="article-like">
+        <div class="article-like-icone">
+            <i class="fa-regular fa-thumbs-up" [ngClass]="{'like': alreadyLike}" (click)="onLikePost()" ></i>
+        </div>
+        <div *ngIf="countOfLikes$ | async as count; else test" class="article-like-number">
+            {{count}}
+        </div>
+        <ng-template #test>
+            <div class="article-like-number">
+                0
+            </div>
+        </ng-template>
+        
+        <div *ngIf="likeMessage" class="article-like-message">
+            {{likeMessage}}
+        </div>
+    </div>
+
+</div>

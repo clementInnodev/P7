@@ -1,0 +1,44 @@
+<div class="post">
+    <div class="post-header">
+        <div>
+            <a (click)="onUpdatePost()"><i class="post-header-icone fa-solid fa-pen-to-square me-3"></i></a>
+        </div>
+        <div>
+            <i (click)="onDeletePost()" class="post-header-icone fa-regular fa-circle-xmark"></i>
+        </div>
+    </div>
+    <div class="post-content">
+        <div *ngIf="post.title" class="post-content-title">
+            {{post.title}}
+        </div>
+        <hr>
+        <ng-container *ngIf="post.imageUrl">
+            <img src="http://localhost:3000/{{post.imageUrl}}" class="post-content-img">
+            <hr>
+        </ng-container>
+        <div class="post-content-txt">
+            {{post.content}}
+        </div>
+    </div>
+    <div class="post-footer">
+        <div *ngIf="creationDateTxt else creation" class="post-footer-creation">
+            Posté {{creationDateTxt + (post.creationDate | date: ' à HH')}}h{{post.creationDate | date:'mm'}}
+        </div>
+        <ng-template #creation>
+            <div class="post-footer-creation">
+                Posté le {{ post.creationDate | date:'dd MMMM yyyy'}} à {{ post.creationDate | date:'HH'}}h{{post.creationDate | date:'mm'}}
+            </div>
+        </ng-template>
+
+        <ng-container *ngIf="post.updateDate">
+            <div *ngIf="updateDateTxt else update" class="post-footer-update">
+                Modifié {{updateDateTxt + (post.updateDate | date: ' à HH')}}h{{post.updateDate | date:'mm'}}
+            </div>
+            <ng-template #update>
+                <div class="post-footer-update">
+                    Modifié le {{ post.updateDate | date:'dd MMMM yyyy'}} à {{ post.updateDate | date:'HH'}}h{{post.updateDate | date:'mm'}}
+                </div>
+            </ng-template>
+        </ng-container>
+    </div>
+</div>

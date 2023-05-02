@@ -1,0 +1,32 @@
+
+
+body{
+    max-height: 100vh;
+    height: 100vh;
+}
+
+.icone{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+    display: none;
+}
+
+@media screen and (min-width: 1550px) {
+    .icone{
+        display: block;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (min-width: 1750px) {
+    .icone{
+        display: block;
+        width: 200px;
+        height: 200px;
+    }
+}

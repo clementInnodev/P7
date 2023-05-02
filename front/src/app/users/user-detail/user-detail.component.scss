@@ -1,0 +1,130 @@
+.block{
+    position: relative;
+    height: auto;
+    padding: 40px;
+    display: flex;
+    border: 1px solid lighten($color: #4E5166, $amount: 40);
+    border-radius: 10px;
+    background-color: white;
+    align-items: center;
+    &-left{
+        height: 100%;
+        width: 50%;
+        margin-right: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &-row{
+            &-img{
+                height: 300px;
+                width: 300px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            &-1{
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            &-2{
+                font-size: 24px;
+                font-weight: bold;
+            }
+            &-3{
+                font-size: 20px;
+                font-style: italic;
+            }
+        }
+    }
+    &-right{
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &-row{
+            &-1{
+                margin-bottom: 20px;
+            }
+            &-2{
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    &-dot{
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: #FD2D01;
+        margin-right: 15px;
+    }
+    &-txt{
+        margin-right: 15px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    &-icone{
+        color: lighten($color: #FD2D01, $amount: 5);
+        font-size: 35px;
+    }
+}
+
+.line{
+    margin-left: 18px;
+    display: flex;
+    align-items: center;
+    &-dash{
+        height: 5px;
+        width: 10px;
+        background-color: #4E5166;
+        border-radius: 25%;
+        margin-right: 10px;
+    }
+    &-txt{
+        font-size: 18px;
+        &-icone{
+            font-size: 22px;
+            margin-left: 10px;
+        }
+        &-address{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.close{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #FD2D01;
+    cursor: pointer;
+    &-icone{
+        font-size: 25px;
+        transition: all 0.3s ease-in-out;
+    }
+    &-txt{
+        font-weight: bolder;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+    &-span{
+        padding-right: 10px;
+        transform: translateX(100%);
+        transition: all 0.3s ease-in-out;
+    }
+    &:hover{
+        .close-span{
+            transform: translateX(0);
+        }
+    }
+}

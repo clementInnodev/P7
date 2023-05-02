@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="container profil-header">
+        <div class="row profil-header-menu">
+            <div class="col profil_menu_item pb-3"><a routerLink="./detail" routerLinkActive="active" class="profil_menu_item_txt">Mon profil</a></div>
+            <div class="col profil_menu_item pb-3"><a routerLink="./modify-password" routerLinkActive="active" class="profil_menu_item_txt">Modifier le mot de passe</a></div>
+            <div class="col profil_menu_item pb-3"><a routerLink="./posts" routerLinkActive="active" class="profil_menu_item_txt">Mes posts</a></div>
+            <div (click)="onLogout()" class="col profil_menu_item pb-3"><span class=" profil_menu_item_txt">Deconnexion</span></div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+

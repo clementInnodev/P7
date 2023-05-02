@@ -1,0 +1,37 @@
+$primary-color: #FD2D01;
+$secondary-color: #FFD7D7;
+$tertiary-color: #4E5166;
+
+.nav{
+    &bar{
+        border-bottom: 1px solid lighten($color: #4E5166, $amount: 40);
+    }
+    &-item{
+        position: relative;
+        transition: all 0.5s ease-in-out;
+        color: $primary-color;
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            height: 3px;
+            width: 0%;
+            background-color: #FD2D01;
+            transform: translateY(10px);
+            transition: all 0.3s ease-in-out;
+        }
+        &:hover{
+            &::after{
+                width: 100%;
+            }
+        }
+    }
+    &-link{
+        font-weight: 500;
+        &.active{
+            color: #FD2D01;
+            font-weight: 700;
+        }
+    }
+}

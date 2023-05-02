@@ -1,0 +1,18 @@
+.container{
+    height: 95vh;
+}
+
+.fa-circle-check{
+    font-size: 150px;
+    --fa-animation-iteration-count: 3
+    --fa-animation-duration: 15s
+}
+
+.card{
+    border: 2px solid #4E5166;
+    background-color: rgba($color: #4E5166, $alpha: 0.1);
+}
+
+p{
+    font-size: 20px;
+}

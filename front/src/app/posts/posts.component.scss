@@ -1,0 +1,76 @@
+:host{
+    display: block;
+    height: 100%;
+}
+
+.container{
+    height: 98%;
+    border-left: 1px solid lighten($color: #4E5166, $amount: 40);
+    border-right: 1px solid lighten($color: #4E5166, $amount: 40);
+    border-bottom: 1px solid lighten($color: #4E5166, $amount: 40);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: white;
+}
+
+.list{
+    flex: 1;
+    min-height: 75%;
+}
+
+.form{
+    border-top: 1px solid lighten($color: #4E5166, $amount: 40);
+    height: 25%;
+    overflow-y: auto;
+    &-col{
+        display: flex;
+        flex-direction: column;
+    }
+    &-message{
+        width: 80%;
+        padding: 10px 10px 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-delete{
+            color: #FD2D01;
+            padding: 10px;
+            border-radius: 10px;
+            border: #FD2D01 1px solid;
+            background-color: lighten($color: #FD2D01, $amount: 40);
+        }
+        &-update{
+            color: #FFC107;
+            padding: 10px;
+            border-radius: 10px;
+            border: #FFC107 1px solid;
+            background-color: lighten($color: #FFC107, $amount: 40);
+        }
+    }
+}
+
+//Représente les breakpoints jusqu'à 'md' de bootstrap soit pour les mobiles et petites tablettes
+@media screen and (max-width: 992px) {
+    .container{
+        border: none;
+        height: 100%;
+    }
+
+    .form{
+        height: 150px;
+    }
+}
+
+//Représente les breakpoints jusqu'à 'lg' de bootstrap soit pour les grandes tablettes
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+    
+}
+
+//Représente les breakpoints à partir de 'xl' de bootstrap soit pour les écrans d'ordinateurs
+@media screen and (min-width: 1201px) {
+    
+    
+}

@@ -1,0 +1,41 @@
+<div [ngClass]="{'justify-content-start': !ownPost, 'justify-content-end': ownPost}" class="post-row d-flex">
+    <div class="post">
+        <div class="post-header d-flex justify-content-between">
+            <div class="d-flex">
+                <img class="post-header-img rounded-circle" src="../../../../../../assets/images/profile-picture.webp" alt="Image de profil de {{postItem.user.firstname}} {{postItem.user.lastname}}">
+                <div class="post-header-txt ms-2 d-flex align-items-center">
+                    {{postItem.user.firstname}} {{postItem.user.lastname}}
+                </div>
+            </div>
+            <div *ngIf="ownPost" class="d-flex align-items-center justify-content-center">
+                <div>
+                    <a (click)="onUpdatePost()"><i class="post-header-icone fa-solid fa-pen-to-square me-3"></i></a>
+                </div>
+                <div (click)="onDeletePost()">
+                    <i class="post-header-icone fa-regular fa-circle-xmark"></i>
+                </div>
+            </div>
+        </div>
+        <div [ngClass]="{'content-other' : !ownPost, 'content-own' : ownPost}" class="post-content">
+            <div *ngIf="postItem.title && postItem.title !== 'null'" class="post-content-title">
+                {{postItem.title}}
+                <hr>
+            </div>
+            <ng-container *ngIf="postItem.imageUrl">
+                <img src="http://localhost:3000/{{postItem.imageUrl}}" class="post-content-img">
+                <hr>
+            </ng-container>
+            <div class="post-content-txt">
+                {{postItem.content}}
+            </div>
+        </div>
+        <div class="post-footer">
+            <div class="post-footer-creation fst-italic">
+                Posté {{creationDateTxt ? creationDateTxt + (postItem.creationDate | date: ' à HH:mm') : 'le ' + (postItem.creationDate | date: 'd MMMM yyyy à HH:mm')}}
+            </div>
+            <div *ngIf="postItem.updateDate && postItem.updateDate !== ''" class="post-footer-update">
+                Modifié {{updateDateTxt ? updateDateTxt + (postItem.updateDate | date: ' à HH:mm') : 'le ' + (postItem.updateDate | date: 'd MMMM yyyy à HH:mm')}}
+            </div>
+        </div>
+    </div>
+</div>

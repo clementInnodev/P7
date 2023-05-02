@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row d-flex align-items-center">
+        <div *ngIf="displayConfirm" class="col-8 offset-2 p-5 shadow-lg card">
+            <h1 class="text-center m-0">Inscription validée !</h1>
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <i class="fa-sharp fa-regular fa-circle-check fa-bounce me-3" style="color: #28a745;"></i>
+                <p class="m-0">Bonne nouvelle {{user.firstname}}, votre inscription est confirmée. Vous pouvez maintenant pleinement profiter de la messagerie interne de Groupamania <i class="fa-regular fa-face-smile"></i></p>
+            </div>
+            <a class="btn btn-outline-primary mt-5" routerLink="/auth/login">Page de connexion</a>
+        </div>
+    </div>
+</div>

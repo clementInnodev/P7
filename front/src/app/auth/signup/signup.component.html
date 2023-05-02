@@ -1,0 +1,327 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 shadow-lg border rounded my-5 p-5">
+            <img src="../../assets/images/FireShot Capture 040 - Modifier une image - ResizePixel - www.resizepixel.com.png" alt="Logo Groupomania en couleur" class="auth-logo-login mt-4 w-100">
+            <div class="mt-4" *ngIf="!formSubmitted">
+                <h2>Nouveau venu ?</h2>
+                <form class="mt-4"  #f="ngForm" (ngSubmit)="onSubmitForm(f)" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="email">Adresse email <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (email.invalid && email.touched) || (email.invalid && f.submitted) || mailAlreadyUsed, 'is-valid': email.valid}" class="form-control" type="email" name="email" id="email" #email="ngModel" ngModel required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                            <span *ngIf="email.invalid && email.touched && email.value !== ''" class="invalid-feedback">Veuillez renseigner un email valide</span>
+                            <span *ngIf="(email.invalid && email.touched && email.value === '') || (email.invalid && f.submitted && email.value === '')" class="invalid-feedback">Veuillez renseigner un email</span>
+                            <span *ngIf="mailAlreadyUsed" class="invalid-feedback">Cette adresse email est déjà utilisée !</span>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="password">Mot de passe <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (password.invalid && password.touched) || (password.invalid && f.submitted), 'is-valid': password.valid}" class="form-control" type="password" name="password" id="password" #password="ngModel" ngModel required minlength="6" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*\W|_).+$">
+                            <span *ngIf="password.invalid && password.touched && password.value !== ''" class="invalid-feedback">Veuillez renseigner un mot de passe valide (6 caractères minimum, 1 majuscule, 1 nombre et 1 caractère spécial)</span>
+                            <span *ngIf="(password.invalid && password.touched && password.value ==='') || (password.invalid && f.submitted && password.value ==='')" class="invalid-feedback">Veuillez renseigner un mot de passe</span>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="form-label" for="firstname">Prénom <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (firstname.invalid && firstname.touched) || (firstname.invalid && f.submitted), 'is-valid': firstname.valid}" class="form-control" type="text" name="firstname" id="firstname" #firstname="ngModel" ngModel required minlength="2" maxlength="30" pattern="^[a-zA-ZÀ-ÿ\s-]+$">
+                            <span *ngIf="firstname.invalid && firstname.touched && firstname.value !== ''" class="invalid-feedback">Veuillez renseigner un prénom valide</span>
+                            <span *ngIf="(firstname.invalid && firstname.touched && firstname.value === '') || (firstname.invalid && f.submitted && firstname.value === '')" class="invalid-feedback">Veuillez renseigner un prénom</span>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="lastname">Nom de famille <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (lastname.invalid && lastname.touched) || (lastname.invalid && f.submitted), 'is-valid': lastname.valid}" class="form-control" type="text" name="lastname" id="lastname" #lastname="ngModel" ngModel required minlength="2" maxlength="30" pattern="^[a-zA-ZÀ-ÿ\s-]+$">
+                            <span *ngIf="lastname.invalid && lastname.touched && lastname.value !== ''" class="invalid-feedback">Veuillez renseigner un nom valide</span>
+                            <span *ngIf="(lastname.invalid && lastname.touched && lastname.value === '') || (lastname.invalid && f.submitted && lastname.value === '')" class="invalid-feedback">Veuillez renseigner un nom</span>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col-6 offset-3">
+                            <label class="form-label" for="service">Service <span class="text-danger">*</span></label>
+                            <select [ngClass]="{'is-invalid': (service.invalid && service.touched) || (service.invalid && f.submitted), 'is-valid': service.valid}" class="form-select" id="service" name="service" #service="ngModel" ngModel required>
+                                <option selected disabled value="">Choisissez votre service</option>
+                                <option value="Comptabilité">Comptabilité</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Développement">Développement</option>
+                                <option value="Ressources humaines">Ressources humaines</option>
+                                <option value="Logistique">Logistique</option>
+                                <option value="Direction">Direction</option>
+                            </select>
+                            <span *ngIf="(service.invalid && service.touched) || (service.invalid && f.submitted)" class="invalid-feedback">Veuillez renseigner un service</span>
+                        </div>
+                    </div>
+                    
+    
+                    <div class="row mt-2">
+                        <div class="col-4">
+                            <label class="form-label" for="birthday">Date de naissance <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (birthday.invalid && birthday.touched) || (birthday.invalid && f.submitted), 'is-valid': birthday.valid}" class="form-control" type="date" name="birthday" id="birthday" #birthday="ngModel" ngModel required>
+                            <span *ngIf="(birthday.invalid && birthday.touched) || (birthday.invalid && f.submitted)" class="invalid-feedback">Veuillez renseigner une date de naissance</span>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="form-label" for="">Genre <span class="text-danger">*</span></label>
+                            <div class="w-100">
+                                <div class="form-check">
+                                    <label class="form-check-label" for="gender">Homme</label>
+                                    <input [ngClass]="{'is-invalid': gender.invalid && gender.untouched && f.submitted, 'is-valid': gender.valid}" class="form-check-input" type="radio" name="gender" id="gender" value="Homme" #gender="ngModel" ngModel required>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" for="gender">Femme</label>
+                                    <input [ngClass]="{'is-invalid': gender.invalid && gender.untouched && f.submitted, 'is-valid': gender.valid}" class="form-check-input" type="radio" name="gender" id="gender" value="Femme" ngModel required>
+                                </div>
+                                <div *ngIf="gender.invalid && f.submitted" class="d-block invalid-feedback">Veuillez renseigner un genre</div>
+                            </div>
+                            
+                        </div>             
+                        <div class="col">
+                            <label class="form-label" for="phoneNumber">Numéro de téléphone <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (phoneNumber.invalid && phoneNumber.touched) || (phoneNumber.invalid && f.submitted), 'is-valid': phoneNumber.valid}" class="form-control" type="tel" name="phoneNumber" id="phoneNumber" #phoneNumber="ngModel" ngModel required minlength="10" maxlength="10" pattern="^(06|07)[\d ()+-]*$">
+                            <span *ngIf="phoneNumber.invalid && phoneNumber.touched && phoneNumber.value !== ''" class="invalid-feedback">Veuillez renseigner un numéro de téléphone valide</span>
+                            <span *ngIf="(phoneNumber.invalid && phoneNumber.touched && phoneNumber.value === '') || (phoneNumber.invalid && f.submitted && phoneNumber.value === '')" class="invalid-feedback">Veuillez renseigner un numéro de téléphone</span>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="form-label" for="address">Adresse <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (address.invalid && address.touched) || (address.invalid && f.submitted), 'is-valid': address.valid}" class="form-control" type="text" name="address" id="address" #address="ngModel" ngModel required minlength="1" maxlength="70" pattern="^[a-zA-ZÀ-ÿ0-9\s\-']+$">
+                            <span *ngIf="address.invalid && address.touched && address.value !== ''" class="invalid-feedback">Veuillez renseigner une adresse valide</span>
+                            <span *ngIf="(address.invalid && address.touched && address.value === '') || (address.invalid && f.submitted && address.value === '')" class="invalid-feedback">Veuillez renseigner une adresse</span>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="additionalAddress">Complément d'adresse</label>
+                            <input [ngClass]="{'is-invalid': additionalAddress.invalid && additionalAddress.touched, 'is-valid': additionalAddress.valid && additionalAddress.value !== ''}" class="form-control" type="text" name="additionalAddress" id="additionalAddress" #additionalAddress="ngModel" ngModel maxlength="70" pattern="^[a-zA-ZÀ-ÿ0-9\s\-,']+$">
+                            <span *ngIf="additionalAddress.invalid && address.touched && address.value !== ''" class="invalid-feedback">Veuillez renseigner une adresse valide</span>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col">
+                            <label class="form-label" for="postcode">Code postal <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (postcode.invalid && postcode.touched) || (postcode.invalid && f.submitted), 'is-valid': postcode.valid}" class="form-control" type="text" name="postcode" id="postcode" #postcode="ngModel" ngModel required minlength="5" maxlength="5" pattern="^\d+$">
+                            <span *ngIf="postcode.invalid && postcode.touched && postcode.value !== ''" class="invalid-feedback">Veuillez renseigner un code postal valide</span>
+                            <span *ngIf="(postcode.invalid && postcode.touched && postcode.value === '') || (postcode.invalid && f.submitted && postcode.value === '')" class="invalid-feedback">Veuillez renseigner un code postal</span>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="town">Ville <span class="text-danger">*</span></label>
+                            <input [ngClass]="{'is-invalid': (town.invalid && town.touched) || (town.invalid && f.submitted), 'is-valid': town.valid}" class="form-control" type="text" name="town" id="town" #town="ngModel" ngModel required minlength="1" maxlength="45" pattern="^[a-zA-ZÀ-ÿ\s-]+$">
+                            <span *ngIf="town.invalid && town.touched && town.value !== ''" class="invalid-feedback">Veuillez renseigner une ville valide</span>
+                            <span *ngIf="(town.invalid && town.touched && town.value === '') || (town.invalid && f.submitted && town.value === '')" class="invalid-feedback">Veuillez renseigner une ville</span>
+                        </div>
+                    </div>
+    
+                    <p class="my-3">
+                        <span class="text-danger">*</span> Champs obligatoires
+                    </p>
+    
+                    <div class="row mt-4">
+                        <div class="col d-flex justify-content-center">
+                            <button class="btn btn-primary w-100">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+
+                
+                <h3 class="mt-4">Déjà inscrit ?</h3>
+                <a class="btn btn-outline-primary w-100 mt-3" routerLink="../login">Se connecter</a>
+            </div>
+            <div *ngIf="formSubmitted" class="mt-4">
+                <div class="alert alert-success my-3">
+                    <h3 class="alert-heading">Inscription réuisse !</h3>
+                    <hr>
+                    <p class="m-0">Un e-mail de confirmation vous a été envoyé pour activer votre compte.</p>
+                </div>
+                <h3 class="mt-4">Direction la connexion ?</h3>
+                <a class="btn btn-outline-primary w-100 mt-3" routerLink="../login">Se connecter</a>
+            </div>
+            
+        </div>
+    </div>
+</div> -->
+
+
+<div class="container-fluid">
+
+    <div class="container shadow-lg">
+
+        <div class="row">
+            <img src="../../assets/images/FireShot Capture 040 - Modifier une image - ResizePixel - www.resizepixel.com.png" alt="Logo Groupomania en couleur" class="logo">
+        </div>
+
+        <ng-container *ngIf="!formSubmitted else confirmation">
+
+            <div class="row">
+                <h1>Nouveau venu ?</h1>
+            </div>
+
+            <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label" for="email">Adresse email <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (email.invalid && email.touched) || (email.invalid && f.submitted) || mailAlreadyUsed, 'is-valid': email.valid}" class="form-control" type="email" name="email" id="email" #email="ngModel" ngModel required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <span *ngIf="email.invalid && email.touched && email.value !== ''" class="invalid-feedback">Veuillez renseigner un email valide</span>
+                        <span *ngIf="(email.invalid && email.touched && email.value === '') || (email.invalid && f.submitted && email.value === '')" class="invalid-feedback">Veuillez renseigner un email</span>
+                        <span *ngIf="mailAlreadyUsed" class="invalid-feedback">Cette adresse email est déjà utilisée !</span>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="password">Mot de passe <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (password.invalid && password.touched) || (password.invalid && f.submitted), 'is-valid': password.valid}" class="form-control" type="password" name="password" id="password" #password="ngModel" ngModel required minlength="6" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*\W|_).+$">
+                        <span *ngIf="password.invalid && password.touched && password.value !== ''" class="invalid-feedback">Veuillez renseigner un mot de passe valide (6 caractères minimum, 1 majuscule, 1 nombre et 1 caractère spécial)</span>
+                        <span *ngIf="(password.invalid && password.touched && password.value ==='') || (password.invalid && f.submitted && password.value ==='')" class="invalid-feedback">Veuillez renseigner un mot de passe</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label" for="firstname">Prénom <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (firstname.invalid && firstname.touched) || (firstname.invalid && f.submitted), 'is-valid': firstname.valid}" class="form-control" type="text" name="firstname" id="firstname" #firstname="ngModel" ngModel required minlength="2" maxlength="30" pattern="^[a-zA-ZÀ-ÿ\s-]+$">
+                        <span *ngIf="firstname.invalid && firstname.touched && firstname.value !== ''" class="invalid-feedback">Veuillez renseigner un prénom valide</span>
+                        <span *ngIf="(firstname.invalid && firstname.touched && firstname.value === '') || (firstname.invalid && f.submitted && firstname.value === '')" class="invalid-feedback">Veuillez renseigner un prénom</span>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="lastname">Nom de famille <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (lastname.invalid && lastname.touched) || (lastname.invalid && f.submitted), 'is-valid': lastname.valid}" class="form-control" type="text" name="lastname" id="lastname" #lastname="ngModel" ngModel required minlength="2" maxlength="30" pattern="^[a-zA-ZÀ-ÿ\s-]+$">
+                        <span *ngIf="lastname.invalid && lastname.touched && lastname.value !== ''" class="invalid-feedback">Veuillez renseigner un nom valide</span>
+                        <span *ngIf="(lastname.invalid && lastname.touched && lastname.value === '') || (lastname.invalid && f.submitted && lastname.value === '')" class="invalid-feedback">Veuillez renseigner un nom</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label" for="phoneNumber">Numéro de téléphone <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (phoneNumber.invalid && phoneNumber.touched) || (phoneNumber.invalid && f.submitted), 'is-valid': phoneNumber.valid}" class="form-control" type="tel" name="phoneNumber" id="phoneNumber" #phoneNumber="ngModel" ngModel required minlength="10" maxlength="10" pattern="^(06|07)[\d ()+-]*$">
+                        <span *ngIf="phoneNumber.invalid && phoneNumber.touched && phoneNumber.value !== ''" class="invalid-feedback">Veuillez renseigner un numéro de téléphone valide</span>
+                        <span *ngIf="(phoneNumber.invalid && phoneNumber.touched && phoneNumber.value === '') || (phoneNumber.invalid && f.submitted && phoneNumber.value === '')" class="invalid-feedback">Veuillez renseigner un numéro de téléphone</span>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="birthday">Date de naissance <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (birthday.invalid && birthday.touched) || (birthday.invalid && f.submitted), 'is-valid': birthday.valid}" class="form-control" type="date" name="birthday" id="birthday" #birthday="ngModel" ngModel required>
+                        <span *ngIf="(birthday.invalid && birthday.touched) || (birthday.invalid && f.submitted)" class="invalid-feedback">Veuillez renseigner une date de naissance</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="gender">
+                        <label class="form-label m-0" for="">Genre <span class="text-danger">*</span></label>
+                        <div class="form-check">
+                            <label class="form-check-label m-0" for="gender">Homme</label>
+                            <input [ngClass]="{'is-invalid': gender.invalid && gender.untouched && f.submitted, 'is-valid': gender.valid}" class="form-check-input" type="radio" name="gender" id="gender" value="Homme" #gender="ngModel" ngModel required>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label m-0" for="gender">Femme</label>
+                            <input [ngClass]="{'is-invalid': gender.invalid && gender.untouched && f.submitted, 'is-valid': gender.valid}" class="form-check-input" type="radio" name="gender" id="gender" value="Femme" ngModel required>
+                        </div>
+                    </div>
+                    <div *ngIf="gender.invalid && f.submitted" class="d-block invalid-feedback">Veuillez renseigner un genre</div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label" for="service">Service <span class="text-danger">*</span></label>
+                        <select [ngClass]="{'is-invalid': (service.invalid && service.touched) || (service.invalid && f.submitted), 'is-valid': service.valid}" class="form-select" id="service" name="service" #service="ngModel" ngModel required>
+                            <option selected disabled value="">Choisissez votre service</option>
+                            <option value="Comptabilité">Comptabilité</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Développement">Développement</option>
+                            <option value="Ressources humaines">Ressources humaines</option>
+                            <option value="Logistique">Logistique</option>
+                            <option value="Direction">Direction</option>
+                        </select>
+                        <span *ngIf="(service.invalid && service.touched) || (service.invalid && f.submitted)" class="invalid-feedback">Veuillez renseigner un service</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label" for="address">Adresse <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (address.invalid && address.touched) || (address.invalid && f.submitted), 'is-valid': address.valid}" class="form-control" type="text" name="address" id="address" #address="ngModel" ngModel required minlength="1" maxlength="70" pattern="^[a-zA-ZÀ-ÿ0-9\s\-']+$">
+                        <span *ngIf="address.invalid && address.touched && address.value !== ''" class="invalid-feedback">Veuillez renseigner une adresse valide</span>
+                        <span *ngIf="(address.invalid && address.touched && address.value === '') || (address.invalid && f.submitted && address.value === '')" class="invalid-feedback">Veuillez renseigner une adresse</span>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="additionalAddress">Complément d'adresse</label>
+                        <input [ngClass]="{'is-invalid': additionalAddress.invalid && additionalAddress.touched, 'is-valid': additionalAddress.valid && additionalAddress.value !== ''}" class="form-control" type="text" name="additionalAddress" id="additionalAddress" #additionalAddress="ngModel" ngModel maxlength="70" pattern="^[a-zA-ZÀ-ÿ0-9\s\-,']+$">
+                        <span *ngIf="additionalAddress.invalid && address.touched && address.value !== ''" class="invalid-feedback">Veuillez renseigner une adresse valide</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label" for="postcode">Code postal <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (postcode.invalid && postcode.touched) || (postcode.invalid && f.submitted), 'is-valid': postcode.valid}" class="form-control" type="text" name="postcode" id="postcode" #postcode="ngModel" ngModel required minlength="5" maxlength="5" pattern="^\d+$">
+                        <span *ngIf="postcode.invalid && postcode.touched && postcode.value !== ''" class="invalid-feedback">Veuillez renseigner un code postal valide</span>
+                        <span *ngIf="(postcode.invalid && postcode.touched && postcode.value === '') || (postcode.invalid && f.submitted && postcode.value === '')" class="invalid-feedback">Veuillez renseigner un code postal</span>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="town">Ville <span class="text-danger">*</span></label>
+                        <input [ngClass]="{'is-invalid': (town.invalid && town.touched) || (town.invalid && f.submitted), 'is-valid': town.valid}" class="form-control" type="text" name="town" id="town" #town="ngModel" ngModel required minlength="1" maxlength="45" pattern="^[a-zA-ZÀ-ÿ\s-]+$">
+                        <span *ngIf="town.invalid && town.touched && town.value !== ''" class="invalid-feedback">Veuillez renseigner une ville valide</span>
+                        <span *ngIf="(town.invalid && town.touched && town.value === '') || (town.invalid && f.submitted && town.value === '')" class="invalid-feedback">Veuillez renseigner une ville</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="alt">
+                            <span class="text-danger">*</span> Champs obligatoires
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col">
+                        <button class="btn btn-primary w-100">Sign Up</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="row">
+                <div class="col">
+                    <h3 class="mt-4">Déjà inscrit ?</h3>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <button routerLink="../login" class="btn btn-outline-primary w-100">Se connecter</button>
+                </div>
+            </div>
+
+        </ng-container>
+
+        <ng-template #confirmation>
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success">
+                        <h2>Inscription réuisse !</h2>
+                        <hr>
+                        <p>Un e-mail de confirmation vous a été envoyé pour activer votre compte.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <h2>Direction la connexion ?</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-outline-primary w-100" routerLink="../login">Se connecter</a>
+                </div>
+            </div>
+            
+        </ng-template>
+
+
+
+    </div>
+
+</div>

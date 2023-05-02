@@ -1,0 +1,66 @@
+.btn{
+    padding: 10px;
+    border-color: #FD2D01;
+    color: #FD2D01;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: #FD2D01;
+        color: white;
+    }
+}
+
+.button{
+    justify-content: center;
+    margin: 40px 0 20px 0;
+}
+
+i{
+    margin-right: 10px;
+}
+
+.delete{
+    justify-content: center;
+    &-block{
+        display: flex;
+        align-items: center;
+        color: #FD2D01;
+        background-color: lighten($color: #FD2D01, $amount: 40);
+        width: auto;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #FD2D01;
+    }
+    &-icone{
+        font-size: 30px;
+    }
+    &-message{
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.update{
+    justify-content: center;
+    &-block{
+        display: flex;
+        align-items: center;
+        color: #FFC107;
+        background-color: lighten($color: #FFC107, $amount: 40);
+        width: auto;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #FFC107;
+    }
+    &-icone{
+        font-size: 30px;
+    }
+    &-message{
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+}

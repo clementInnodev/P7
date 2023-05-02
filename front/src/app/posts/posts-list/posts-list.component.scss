@@ -1,0 +1,38 @@
+:host{
+    height: 100%;
+    padding: 10px;
+}
+
+.container{
+    height: 100%;
+    overflow-y: auto;
+}
+
+.btn{
+    border-color: #FD2D01;
+    color: #FD2D01;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: #FD2D01;
+        color: white;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 200px
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: lighten($color: #4E5166, $amount: 40);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    height: 90%
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #4E5166; /* lighten($color: #4E5166, $amount: 30); */
+    height: 90%
+}

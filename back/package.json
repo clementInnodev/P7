@@ -1,0 +1,40 @@
+{
+  "name": "p7---openclassroom",
+  "version": "1.0.0",
+  "description": "Projet 7 OC - rest API with express / mongoose / typeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon dist/app.js"
+  },
+  "author": "Clément Berthomé",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/express": "^4.17.14",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^18.11.9",
+    "@types/nodemailer": "^6.4.6",
+    "@types/nodemailer-sendgrid": "^1.0.0",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "inversify": "^6.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.1",
+    "multer": "1.4.4",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.8.0",
+    "nodemailer-sendgrid": "^1.0.3",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.25.6",
+    "sequelize-typescript": "^2.1.5",
+    "socket.io": "^4.5.3",
+    "uuid": "^9.0.0"
+  }
+}

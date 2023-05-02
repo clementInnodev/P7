@@ -1,0 +1,80 @@
+<div *ngIf="user$ | async as user" class="block">
+    <div class="block-left">
+        <div class="block-left-row block-left-row-1">
+            <img class="block-left-row-img" src="../../../assets/images/profile-picture.webp" alt="photo de {{user.firstname}} {{user.lastname}}">
+        </div>
+        <div class="block-left-row block-left-row-2">
+            {{user.firstname}} {{user.lastname}}
+        </div>
+        <div class="block-left-row block-left-row-3">
+            Service {{user.service}}
+        </div>
+    </div>
+    <div class="block-right">
+        <div class="block-right-row block-right-row-1">
+            <div class="title">
+                <div class="title-dot"></div>
+                <div class="title-txt">Détails</div>
+                <i class="fa-regular fa-address-card title-icone"></i>
+            </div>
+            <div class="line">
+                <div class="line-dash"></div>
+                <div class="line-txt">
+                    {{user.gender === 'Homme' ? 'Né' : 'Née'}} le {{user.birthday | date:'d MMMM y'}}
+                </div>
+            </div>
+            <div class="line">
+                <div class="line-dash"></div>
+                <div class="line-txt">
+                    {{user.gender}}<i *ngIf="user.gender === 'Homme' else femme" class="fa-solid fa-mars line-txt-icone"></i><ng-template #femme><i class="fa-solid fa-venus line-txt-icone"></i></ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="block-right-row block-right-row-2">
+            <div class="title">
+                <div class="title-dot"></div>
+                <div class="title-txt">Contact</div>
+                <i class="fa-solid fa-phone title-icone"></i>
+            </div>
+            <div class="line">
+                <div class="line-dash"></div>
+                <div class="line-txt">
+                    Téléphone : {{user.phoneNumber}}
+                </div>
+            </div>
+            <div class="line">
+                <div class="line-dash"></div>
+                <div class="line-txt">
+                    Email : {{user.email}}
+                </div>
+            </div>
+        </div>
+        <div class="block-right-row block-right-row-3">
+            <div class="title">
+                <div class="title-dot"></div>
+                <div class="title-txt">Adresse</div>
+                <i class="fa-solid fa-house-user title-icone"></i>
+            </div>
+            <div class="line">
+                <div class="line-dash"></div>
+                <div class="line-txt line-txt-address">
+                    <div class="line-txt-address-1">
+                        {{user.address}},
+                    </div>
+                    <div *ngIf="user.additionalAddress" class="line-txt-address-2">
+                        {{user.additionalAddress}},
+                    </div>
+                    <div class="line-txt-address-3">
+                        {{user.postcode}} {{user.town}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div (click)="closeUserDetail()" class="close">
+        <div class="close-txt"><div class="close-span">Fermer</div></div> 
+        <i class="fa-regular fa-circle-xmark close-icone"></i>
+    </div>
+</div>
+

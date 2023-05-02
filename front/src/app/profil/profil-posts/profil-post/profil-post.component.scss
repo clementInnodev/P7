@@ -1,0 +1,34 @@
+.post{
+    margin-top: 10px;
+    height: auto;
+    width: 60%;
+    &-header{
+        padding: 5px 10px 5px 10px;
+        display: flex;
+        justify-content: start;
+        &-icone{
+            font-size: 16px;
+            cursor: pointer;
+        }
+    }
+    &-content{
+        background-color: lighten($color: #4E5166, $amount: 55);
+        border-radius: 10px;
+        padding: 10px;
+        word-wrap: break-word;
+        &-title{
+            font-weight: bold;
+        }
+        &-img{
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+        }
+    }
+    &-footer{
+        padding: 5px 10px 5px 10px;
+        font-style: oblique;
+        font-size: 13px;
+    }
+}

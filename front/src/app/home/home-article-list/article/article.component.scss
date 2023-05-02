@@ -1,0 +1,121 @@
+.article{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 20px 0;
+    word-wrap: break-word;
+    &-header{
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: end;
+        padding: 20px 30px 20px 0;
+        &-img{
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        &-name{
+            display: flex;
+            justify-content: end;
+        }
+        &-service{
+            display: flex;
+            justify-content: end;
+        }
+    }
+    &-content{
+        position: relative;
+        width: 40%;
+        min-width: 40%;
+        background-color: lighten($color: #4E5166, $amount: 55);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        &-title{
+            font-weight: bold;
+        }
+        &-txt{
+            flex: 1;
+            word-wrap: break-word;
+        }
+        &-line{
+            width: 50%;
+            height: 1px;
+            margin: 20px 0 20px 0;
+            background-color: #767676;
+        }
+        &-footer{
+            font-style: italic;
+            font-size: 13px;
+        }
+        &-menu{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: flex;
+            &-icone{
+                font-size: 18px;
+                cursor: pointer;
+                &-delete{
+                    margin-left: 10px;
+                }
+            }
+        }
+        &-img{
+            width: auto;
+            height: 450px;
+            max-height: 450px;
+            object-fit: cover;
+        }
+    }
+    &-like{
+        position: relative;
+        background-color: lighten($color: #4E5166, $amount: 55);
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        min-height: 80px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0 20px 30px;
+        color: #767676;
+        &-icone{
+            font-size: 25px;
+            cursor: pointer;
+        }
+        &-number{
+            font-weight: bold;
+        }
+        &-message{
+            position: absolute;
+            font-size: 14px;
+            font-style: italic;
+            top: 50%;
+            left: 105%;
+            transform: translateY(-50%);
+            width: 200px;
+        }
+    }
+}
+
+.like{
+    color: #FD2D01;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 20px solid lighten($color: #4E5166, $amount: 55);
+    position: absolute;
+    top: 50px;
+    left: -20px;
+}

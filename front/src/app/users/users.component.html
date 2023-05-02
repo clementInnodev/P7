@@ -1,0 +1,13 @@
+<div class="container-fluid pc">
+    <div class="row">
+        <div class="element element-1 col-lg-3 offset-lg-1 col-5">
+            <app-users-list></app-users-list>
+        </div>
+        <div class="element element-2 col-lg-6 offset-lg-1 col-7">
+            <router-outlet></router-outlet>
+            <div *ngIf="(userSelected$ | async) === null" class="message">
+                Veuillez sélectionner une utilisateur afin d'afficher son profil...
+            </div>
+        </div>
+    </div>
+</div>

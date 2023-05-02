@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <form #f="ngForm" (ngSubmit)="onSubmitForm(f)" class="form" enctype="multipart/form-data">
+        <div class="form-close">
+            <div class="form-close-txt"><div class="form-close-span">Fermer</div></div> 
+            <i (click)="onCloseForm()" class="fa-regular fa-circle-xmark form-close-icone"></i>
+        </div>
+        <div class="inputs">
+            <div *ngIf="updateMessage" class="alert alert-warning"><i class="fa-solid fa-check"></i> {{updateMessage}}</div>
+            <div *ngIf="deleteMessage" class="alert alert-danger"><i class="fa-solid fa-check"></i> {{deleteMessage}}</div>
+            <input class="inputs-title border-send" type="text" placeholder="Titre facultatif..." name="title" id="title" [(ngModel)]="postTitle" #title="ngModel">
+            <div class="inputs-area">
+                <textarea class="inputs-area-content border-send" placeholder="Contenu du post..." name="content" id="content" [(ngModel)]="postContent" #content="ngModel" required minlength="2" maxlength="1000"></textarea>
+                <div #contentMissing *ngIf="content.invalid && f.submitted" class="invalid-feedback d-block"><i class="fa-solid fa-triangle-exclamation"></i> Veuillez renseigner du contenu (entre 2 et 1000 caractères).</div>
+                <div class="inputs-area-file">
+                    <label class="inputs-area-file-label" for="file-input">
+                        <i class="fa-solid fa-paperclip inputs-area-file-icone"></i>
+                    </label>
+                    <input id="file-input" class="inputs-area-file-input" type="file" (change)="onFileSelected($event)"/>
+                </div>
+            </div>
+
+            <div *ngIf="!postToEdit else updateImageMessages" class="image-preview">
+                <div *ngIf="image else creationNoImage">
+                    <span class="image-preview-txt">Une image a été sélectionnée:</span><span class="image-preview-file">{{image.name}}</span>
+                    <i class="fa-solid fa-delete-left image-preview-icone" (click)="image = null"></i>
+                </div>
+                <ng-template #creationNoImage>
+                    <span class="image-preview-txt">Aucune image n'a été sélectionnée.</span>
+                </ng-template>
+            </div>
+            
+            <ng-template #updateImageMessages>
+                <div *ngIf="postImageUrl && postImageUrl !== 'delete' && !image" class="image-preview">
+                    <span class="image-preview-txt">Une image est enregistrée pour ce post:</span><span class="image-preview-file">{{postImageUrl}}</span>
+                    <i class="fa-solid fa-delete-left image-preview-icone" (click)="postImageUrl = 'delete'"></i>
+                </div>
+                <div *ngIf="postImageUrl && postImageUrl === 'delete' && !image" class="image-preview">
+                    <span class="image-preview-txt">L'image de ce post vient d'être supprimée.</span>
+                </div>
+                <div *ngIf="!postImageUrl && !image" class="image-preview">
+                    <span class="image-preview-txt">Aucune image n'a été sélectionnée.</span>
+                </div>    
+                <div *ngIf="image" class="image-preview">
+                    <span class="image-preview-txt">Une nouvelle image est sélectionnée pour ce post:</span><span class="image-preview-file">{{image.name}}</span>
+                    <i class="fa-solid fa-delete-left image-preview-icone" (click)="image = null"></i>
+                </div>
+            </ng-template>
+
+        </div>
+        <div *ngIf="!postToEdit else updateButtons" class="buttons buttons-send">
+            <button class="btn border-send"><i class="fa-solid fa-share btn-icone"></i></button>
+        </div>
+        <ng-template #updateButtons>
+            <div class="buttons buttons-send">
+                <button class="btn border-update"><i class="fa-solid fa-pen-to-square btn-icone"></i></button>
+                <button (click)="onCloseForm()" class="btn border-update mt-3"><i class="fa-regular fa-circle-stop btn-icone"></i></button>
+            </div>
+        </ng-template>
+    </form>
+</div>

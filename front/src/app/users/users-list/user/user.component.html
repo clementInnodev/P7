@@ -1,0 +1,16 @@
+<div routerLink="{{user.id}}" class="custom-card" [ngClass]="{'mt-2': user.id > 1}">
+    <ng-container *ngIf="(userSelectedId$ | async) as userSelectedId">
+        <div *ngIf="+user.id === +userSelectedId" class="custom-card-selector"></div>
+    </ng-container>
+    
+    <img class="custom-card-img" src="../../../../assets/images/profile-picture.webp" alt="photo de {{user.firstname}} {{user.lastname}}">
+    <div class="custom-card-content">
+        <div>
+            {{user.firstname}}
+            {{user.lastname}}
+        </div>
+        <div>
+            {{user.service}}
+        </div>
+    </div>
+</div>

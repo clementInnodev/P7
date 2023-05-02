@@ -1,0 +1,18 @@
+<form class="block-form" #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+    <div class="block-form-inputs">
+        <input class="block-form-inputs-title border-update" type="text" placeholder="Titre facultatif..." name="title" id="title" [(ngModel)]="postToEditTitle" #title="ngModel">
+        <div class="block-form-inputs-area">
+            <textarea class="block-form-inputs-area-content border-update" placeholder="Contenu du post..." name="content" id="content" [(ngModel)]="postToEditContent" #content="ngModel" required minlength="2" maxlength="1000"></textarea>
+            <div class="file-input-block">
+                <label class="file-input-label" for="file-input">
+                    <i class="fa-solid fa-paperclip file-input-icone"></i>
+                </label>
+                <input name="imageUrl" id="file-input" class="file-input" type="file" (change)="onFileSelected($event)" />
+            </div>
+        </div>
+    </div>
+        <div class="block-form-buttons btn-update">
+            <button class="btn border-update"><i class="fa-solid fa-pen-to-square btn-icone"></i></button>
+            <button (click)="onLeaveUpdate()" class="btn border-update mt-5"><i class="fa-regular fa-circle-stop btn-icone"></i></button>
+        </div>
+</form>

@@ -1,0 +1,104 @@
+<div class="container title">
+    <h1>Modification du profil</h1>
+</div>
+
+<div *ngIf="user$ | async as user" class="container">
+
+    <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+
+        <div class="row">
+            <div class="col img-block">
+                <img class="img" src="../../../assets/images/profile-picture.webp" alt="photo de profil de {{user.firstname}} {{user.lastname}}">
+            </div>
+            <div class="col">
+                <div class="row">
+                    <label class="form-label" for="firstname">Prénom</label>
+                    <input class="form-control" type="text" id="firstname" name="firstname" [(ngModel)]="user.firstname" required>
+                </div>
+                <div class="row">
+                    <label class="form-label" for="lastname">Nom</label>
+                    <input class="form-control" type="text" id="lastname" name="lastname" [(ngModel)]="user.lastname" #lastname="ngModel" required>
+                </div>
+                <div class="row">
+                    <label class="form-label" for="birthday">Date de naissance</label>
+                    <input class="form-control" type="date" id="birthday" name="birthday" [(ngModel)]="user.birthday" #birthday="ngModel" required>
+                </div>
+                <div class="row">
+                    <label class="form-label" for="service">Service</label>
+                    <select id="service" class="form-select" name="service" #service="ngModel" [(ngModel)]="user.service" required>
+                        <option value="Comptabilité">Comptabilité</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Développement">Développement</option>
+                        <option value="Ressources humaines">Ressources humaines</option>
+                        <option value="Logistique">Logistique</option>
+                        <option value="Direction">Direction</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    
+        <hr>
+
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Genre</label>
+                <div class="d-flex">
+                    <div class="form-check">
+                        <label class="form-check-label" for="gender">Homme</label>
+                        <input class="form-check-input" type="radio" name="gender" id="gender" value="Homme" [(ngModel)]="user.gender" #gender="ngModel" required>
+                    </div>
+                    <div class="form-check ms-5">
+                        <label class="form-check-label" for="gender">Femme</label>
+                        <input class="form-check-input" type="radio" name="gender" id="gender" value="Femme" [(ngModel)]="user.gender" #gender="ngModel" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="text" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" required email>
+            </div>
+            <div class="col">
+                <label class="form-label" for="phoneNumber">Numéro de téléphone</label>
+                <input class="form-control" type="tel" id="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel" required>
+            </div>
+        </div>
+
+        <hr>
+    
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="address">Adresse</label>
+                <input class="form-control" type="text" id="address" name="address" [(ngModel)]="user.address" #address="ngModel" required>
+            </div>
+            <div class="col">
+                <label class="form-label" for="additionalAddress">Complément d'adresse</label>
+                <input class="form-control" type="text" id="additionalAddress" name="additionalAddress" [(ngModel)]="user.additionalAddress" #additionalAddress="ngModel" required>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col">
+                <label class="form-label" for="postcode">Code postal</label>
+                <input class="form-control" type="number" id="postcode" name="postcode" [(ngModel)]="user.postcode" #postCode="ngModel" required>
+            </div>
+            <div class="col">
+                <label class="form-label" for="town">Ville</label>
+                <input class="form-control" type="text" id="town" name="town" [(ngModel)]="user.town" #town="ngModel" required>
+            </div>
+        </div>
+
+        <div *ngIf="!successMessage else message" class="row row-btn">
+            <button class="btn btn-outline-success">Modifier le profil</button>
+        </div>
+
+        <ng-template #message>
+            <div  class="message-block">
+                <span class="message">{{successMessage}}.</span>
+                <span class="message">Vous allez être redirigé.</span>
+            </div>
+        </ng-template>
+        
+
+    </form>
+
+</div>

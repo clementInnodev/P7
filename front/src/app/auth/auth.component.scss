@@ -1,0 +1,13 @@
+.auth{
+    &-logo{
+        &-login{
+            width: 100%;
+        }
+        &-signup{
+            width: 60%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}

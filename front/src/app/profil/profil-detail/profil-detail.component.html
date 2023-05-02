@@ -1,0 +1,125 @@
+ <div class="block">
+    <div *ngIf="user$ | async as user" class="profil">
+        <div class="profil-col left">
+            <div class="left-row-1">
+                <img class="left-img" src="../../../assets/images/profile-picture.webp" alt="photo de profil de {{user.firstname}} {{user.lastname}}">
+            </div>
+            <div class="left-row-2">
+                {{user.firstname}} {{user.lastname}}
+            </div>
+            <div class="left-row-3">
+                Service {{user.service}}
+            </div>
+        </div>
+
+        <div class="profil-col right">
+            <div class="right-row-1">
+                <div class="title">
+                    <div class="title-dot"></div>
+                    <div class="title-content">
+                        Détails
+                    </div>
+                    <i class="fa-regular fa-address-card title-icone"></i>
+                </div>
+                <div class="line line-detail-1">
+                    <div class="line-dash"></div>
+                    <div class="line-content">
+                        {{user.gender === 'Homme' ? 'Né' : 'Née'}} le {{user.birthday | date:'d MMMM y'}}
+                    </div>
+                </div>
+                <div class="line line-detail-2">
+                    <div class="line-dash"></div>
+                    <div class="line-content">
+                        {{user.gender}}<i *ngIf="user.gender === 'Homme' else femme" class="fa-solid fa-mars line-content-icone"></i><ng-template #femme><i class="fa-solid fa-venus line-content-icone"></i></ng-template>
+                    </div>
+                </div>
+            </div>
+            <div class="right-row-2">
+                <div class="title">
+                    <div class="title-dot"></div>
+                    <div class="title-content">
+                        Contact
+                    </div>
+                    <i class="fa-solid fa-phone title-icone"></i>
+                </div>
+                <div class="line line-contact-1">
+                    <div class="line-dash"></div>
+                    <div class="line-content">
+                        Téléphone : {{user.phoneNumber}}
+                    </div>
+                </div>
+                <div class="line line-contact-1">
+                    <div class="line-dash"></div>
+                    <div class="line-content">
+                        Email : {{user.email}}
+                    </div>
+                </div>
+            </div>
+            <div class="right-row-3">
+                <div class="title">
+                    <div class="title-dot"></div>
+                    <div class="title-content">
+                        Adresse
+                    </div>
+                    <i class="fa-solid fa-house-user title-icone"></i>
+                </div>
+                <div class="line line-address">
+                    <div class="line-dash"></div>
+                    <div class="line-content">
+                        <div class="line-content-1">
+                            {{user.address}},
+                        </div>
+                        <div *ngIf="user.additionalAddress" class="line-content-2">
+                            {{user.additionalAddress}},
+                        </div>
+                        <div class="line-content-3">
+                            {{user.postcode}} {{user.town}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit">
+            <div class="delete">
+                <div class="delete-txt">
+                    <div class="delete-span">
+                        Supprimer
+                    </div>
+                </div>
+                <i (click)="showDeleteConfirmation = true" class="fa-regular fa-rectangle-xmark"></i>
+            </div>
+            <div class="update">
+                <div class="update-txt">
+                    <div class="update-span">
+                        Modifier
+                    </div>
+                </div>
+                <i routerLink="../edit-profil" class="fa-regular fa-pen-to-square"></i>
+            </div>
+        </div>
+
+
+        <div *ngIf="showDeleteConfirmation" class="delete-confirmation">
+            <div class="delete-confirmation-block">
+                <div class="delete-confirmation-block-row-1">
+                    <i class="fa-solid fa-skull-crossbones delete-confirmation-block-row-1-icone"></i>
+                    <span class="delete-confirmation-block-row-1-span">Attention</span>
+                </div>
+                <div class="delete-confirmation-block-row-2">
+                    <span class="delete-confirmation-block-row-2-span">Vous allez complètement supprimer votre profil.</span>
+                    <span class="delete-confirmation-block-row-2-span">Toutes vos données seront perdues.</span>
+                    <span class="delete-confirmation-block-row-2-span">Confirmez-vous ce choix ?</span>
+                </div>
+                <div class="delete-confirmation-block-row-3">
+                    <button (click)="onDeleteProfil(user.id)" class="btn btn-outline-danger">Supprimer</button>
+                    <button (click)="showDeleteConfirmation = false" class="btn btn-outline-success">Conserver</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+ </div>
+
+ 

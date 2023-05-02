@@ -1,0 +1,47 @@
+.post{
+    width: 40%;
+    height: auto;
+    &-header{
+        &-img{
+            height: 30px;
+            width: 30px;
+            object-fit: cover;
+        }
+        &-txt{
+            color: #4E5166;
+        }
+        &-icone{
+            color: #4E5166;
+            cursor: pointer;
+        }
+    }
+    &-content{
+        padding: 10px;
+        margin: 10px 0 10px 0;
+        border-radius: 10px;
+        word-wrap: break-word;
+        &-title{
+            font-weight: bold;
+        }
+        &-img{
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+        }
+    }
+    &-footer{
+        font-size: 13px;
+        font-style: italic;
+        color: #4E5166;
+    }
+}
+
+.content{
+    &-other{
+        background-color: lighten($color: #4E5166, $amount: 55);
+    }
+    &-own{
+        background-color: lighten($color: #FD2D01, $amount: 30);
+    }
+}

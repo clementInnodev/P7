@@ -1,0 +1,33 @@
+.custom-card{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid lighten($color: #4E5166, $amount: 40);
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
+    &:hover{
+        border-color: #FD2D01;
+    }
+    &-img{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+    &-content{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
+    &-selector{
+        width: 10px;
+        border-radius: 10px;
+        background-color: #FD2D01;
+        margin-right: 10px;
+    }
+}

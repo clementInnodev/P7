@@ -1,0 +1,29 @@
+<div class="container" >
+    <div class="block">
+        <div class="list" #list>
+            <div *ngIf="posts$ | async as posts" class="list-posts">
+                <div *ngFor="let post of posts; let last = last; let i = index" class="row" >
+                    <app-profil-post [post]="post" (clickOnUpdatePostEvent)="onGetPostToUpdate($event)"></app-profil-post>
+                    <div *ngIf="last" #bottom></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-container *ngIf="postDeleteMessage$ | async as deleteMessage">
+        <div *ngIf="deleteMessage !== null" class="confirmation">
+            <div class="confirmation-delete">{{deleteMessage}}</div>
+        </div>
+    </ng-container>
+    <div *ngIf="updateMessage" class="confirmation">
+        <div class="confirmation-update">{{updateMessage}}</div>
+    </div>
+    
+    <div [ngClass]="{'hidden': !displayForm, 'show': displayForm}" class="form">
+        <app-profil-posts-form (leaveUpdateModeEvent)="onLeaveUpdateMode()" (postModifyEvent)="onPostUpdated($event)" [postToEdit]="postToUpdate ? postToUpdate : null" [postToEditTitle]="postToUpdate ? postToUpdate.title : null" [postToEditContent]="postToUpdate ? postToUpdate.content : null" [postToEditImageUrl]="postToUpdate ? postToUpdate.imageUrl : null" ></app-profil-posts-form>
+    </div>
+</div>
+
+<ng-container *ngIf="hiddeDeletePostConfirmation$ | async as id">
+    <app-delete-post-confirmation [postId]="id" *ngIf="id !== null"></app-delete-post-confirmation>
+</ng-container>

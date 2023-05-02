@@ -1,0 +1,31 @@
+<div class="container-fluid" #container>
+
+    <div *ngIf="createPost || postToEdit" class="row form">
+        <app-home-article-form (closeFormEvent)="onCloseForm()" [post]="postToEdit"></app-home-article-form>
+    </div>
+
+    <div class="row button" *ngIf="!createPost && !postToEdit">
+        <button (click)="test()" class="btn btn-outline-primary w-auto"><i class="fa-regular fa-message"></i> Nouvelle publication</button>
+    </div>
+
+    <div *ngIf="postDeleteMessage$ | async as deleteMessage" class="row delete">
+        <div class="delete-block">
+            <i class="fa-regular fa-square-check delete-icone"></i>
+            <div class="delete-message">
+                {{deleteMessage}}
+            </div>
+        </div>
+    </div>
+    <div *ngIf="postUpdateMessage$ | async as updateMessage" class="row update">
+        <div class="update-block">
+            <i class="fa-regular fa-square-check update-icone"></i>
+            <div class="update-message">
+                {{updateMessage}}
+            </div>
+        </div>
+    </div>
+    
+    <div class="row list">
+        <app-home-article-list></app-home-article-list>
+    </div>
+</div>

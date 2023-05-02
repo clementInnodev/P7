@@ -1,0 +1,15 @@
+<div class="container" #list>
+    <div *ngIf="posts$ | async as posts">
+        <div class="row justify-content-center mt-3">
+            <button *ngIf="+posts.length === 20" (click)="onLoadMorePost()" class="btn btn-outline-primary w-auto">Charger plus de post</button>
+        </div>
+        <div *ngFor="let post of posts; let i = index; let last = last" [ngClass]="{'mb-3': +posts.length === (+i + 1), 'mt-3': +i === 0, 'mt-5': (+i + 1) !== 1}" class="row">
+            <app-post [postItem]="post"></app-post>
+            <div *ngIf="last" #bottom></div>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="hiddeDeletePostConfirmation$ | async as id">
+    <app-delete-post-confirmation *ngIf="id !== null" [postId]="id"></app-delete-post-confirmation>
+</ng-container>

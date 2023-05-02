@@ -1,0 +1,36 @@
+<div class="block">
+    <form class="block-form" #f="ngForm" (ngSubmit)="onSubmitForm(f)" enctype="multipart/form-data">
+        <div class="block-form-inputs">
+            <input [ngClass]="{'border-send': !postToEdit, 'border-update': postToEdit}" class="block-form-inputs-title" type="text" placeholder="Titre facultatif..." name="title" id="title" [(ngModel)]="postTitle" #title="ngModel">
+            <div class="block-form-inputs-area">
+                <textarea [ngClass]="{'border-send': !postToEdit, 'border-update': postToEdit}" class="block-form-inputs-area-content" placeholder="Contenu du post..." name="content" id="content" [(ngModel)]="postContent" #content="ngModel" required minlength="2" maxlength="1000"></textarea>
+                <div class="file-input-block">
+                    <label class="file-input-label" for="file-input">
+                        <i class="fa-solid fa-paperclip file-input-icone"></i>
+                    </label>
+                    <input name="imageUrl" id="file-input" class="file-input" type="file" (change)="onFileSelected($event)" />
+                </div>
+            </div>
+            <div *ngIf="image else noImage" class="image-preview">
+                <div>
+                    <span class="image-preview-txt">{{postToEdit ? 'Une nouvelle image a été sélectionnée: ' : 'Une image a été sélectionnée: '}}</span><span class="image-preview-file">{{image.name}}</span>
+                </div>
+                <i class="fa-regular fa-file-excel image-preview-icone" (click)="image = null" ></i>
+            </div>
+            <ng-template #noImage>
+                <div class="image-preview">
+                    <span class="image-preview-txt">{{postToEdit ? 'Aucune nouvelle image n\'a été sélectionnée.' : 'Aucune image n\'a été sélectionnée.'}}</span>
+                </div>
+            </ng-template>
+        </div>
+        <div *ngIf="!postToEdit else update" class="block-form-buttons btn-send">
+            <button class="btn border-send"><i class="fa-solid fa-share btn-icone"></i></button>
+        </div>
+        <ng-template #update>
+            <div class="block-form-buttons btn-update">
+                <button class="btn border-update"><i class="fa-solid fa-pen-to-square btn-icone"></i></button>
+                <button (click)="onLeaveUpdate()" class="btn border-update mt-3"><i class="fa-regular fa-circle-stop btn-icone"></i></button>
+            </div>
+        </ng-template>
+    </form>
+</div>
